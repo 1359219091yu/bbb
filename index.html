@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #div1 {
+            height: 50px;
+            width: 800px;;
+            background-color:darkgray;
+        }
+
+        ol li {
+            margin-left: 30px;
+            list-style: none;
+            height: 40px;
+            text-align: center;
+            margin-top: 5px;
+            line-height: 40px;
+            width: 150px;
+            background-color: aqua;
+            border-radius: 5px;
+        }
+
+        ol li:hover {
+            background-color: blue;
+        }
+
+        #div {
+            position: absolute;
+            height: 220px;
+            width: 600px;
+            margin-left: 190px;
+            margin-top: -220px;
+            background-color: palegoldenrod;
+            border-radius: 5px;
+        }
+
+        #div2 {
+            height: 50px;
+            width: 600px;
+            background-color: lightgray;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        #div3 {
+            text-align: center;
+            height: 50px;
+            width: 600px;
+            background-color: darkgray;
+        }
+
+        ul {
+
+            height: 170px;
+            width: 600px;
+            border: 1px solid green;
+            background-color: bisque;
+        }
+
+        ul li {
+            text-align: center;
+            color: chocolate;
+            list-style: none;
+        }
+
+    </style>
+    <script type="text/javascript" src="boot/vue/js/vue2.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="div1">周考</div>
+        <ol>
+            <li @click="selectType('首页')">首页</li>
+            <li @click="selectType('菜单1')">菜单1</li>
+            <li @click="selectType('菜单2')">菜单2</li>
+            <li @click="selectType('菜单3')">菜单3</li>
+            <li @click="selectType('菜单4')">菜单4</li>
+
+        </ol>
+        <div id="div">
+            <div id="div2">周考/{{type}}</div>
+            <section v-if="type=='首页'">
+                <div id="div3">{{type}}</div>
+            </section>
+            <section v-else-if="type=='菜单1'">
+                <ul>
+                    <div id="div3">{{type}}</div>
+                    <li>
+                        <h1>菜单1的内容</h1>
+                    </li>
+
+                </ul>
+            </section>
+
+            <section v-else-if="type=='菜单2'">
+                <ul>
+                    <div id="div3">{{type}}</div>
+                    <li>
+                        <h1>菜单2的内容</h1>
+                    </li>
+
+                </ul>
+            </section>
+            <section v-else-if="type=='菜单3'">
+                <ul>
+                    <div id="div3">{{type}}</div>
+                    <li>
+                        <h1>菜单3的内容</h1>
+                    </li>
+
+                </ul>
+            </section>
+            <section v-else-if="type=='菜单4'">
+                <ul>
+                    <div id="div3">{{type}}</div>
+                    <li>
+                        <h1>菜单4的内容</h1>
+                    </li>
+
+                </ul>
+            </section>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            type: "首页"
+        },
+        methods: {
+            selectType: function(type) {
+                this.type = type;
+            }
+        }
+
+    })
+
+</script>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+
+    <script>
+        window.onload = function() {
+            var btn = document.getElementById('btn');
+            btn.onclick = function() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', '1.php', true);
+                xhr.send();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            var data = JSON.parse(xhr.responseText);
+                            var li = document.getElementById('li');
+                            var html = '';
+                            for (var i = 0; i < data.length; i++) {
+                                html += '<li><a href="">' + data[i].title + '</a> [<span>' + data[i].date + '</span>]</li>';
+                            }
+                            li.innerHTML = html;
+                        } else {
+                            alert('出错了,Err：' + xhr.status);
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="button" value="点击显示" id="btn" />
+    <ul id="li"></ul>
+</body>
+
+</html>
